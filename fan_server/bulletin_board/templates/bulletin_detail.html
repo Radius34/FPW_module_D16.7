@@ -1,0 +1,15 @@
+<h1>{{ bulletin.title }}</h1>
+<p>{{ bulletin.content }}</p>
+
+<h2>Отклики:</h2>
+{% for response in responses %}
+  <p>{{ response.text }}</p>
+{% empty %}
+  <p>На данный момент нет откликов</p>
+{% endfor %}
+
+<form method="post" action="{% url 'bulletin_detail' bulletin_id=bulletin.id %}">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Отправить отклик</button>
+</form>

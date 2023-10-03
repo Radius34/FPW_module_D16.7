@@ -1,0 +1,12 @@
+<h1>Мои отклики</h1>
+
+{% for bulletin in bulletins %}
+  <h2>{{ bulletin.title }}</h2>
+  {% for response in bulletin.response_set.all %}
+    <p>{{ response.text }}</p>
+  {% empty %}
+    <p>На данный момент нет откликов на данное объявление</p>
+  {% endfor %}
+{% empty %}
+  <p>На данный момент нет откликов</p>
+{% endfor %}
